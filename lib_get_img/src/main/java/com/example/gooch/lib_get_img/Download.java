@@ -102,18 +102,18 @@ public class Download {
     }
 
     public static void download(String title, ImageBean imageBean, int i) throws Exception {
-        // 构造URL
+       
         URL url = new URL(imageBean.src);
-        // 打开连接
+      
         URLConnection con = url.openConnection();
-        // 输入流
+        
         InputStream is = con.getInputStream();
-        // 1K的数据缓冲
+        
         byte[] bs = new byte[1024];
-        // 读取到的数据长度
+       
         int len;
-        // 输出的文件流
-        String filename = title + "_" + (i + 1) + "." + imageBean.type;  //下载路径及下载图片名称
+       
+        String filename = title + "_" + (i + 1) + "." + imageBean.type; 
         File file = new File("E:\\image_download\\" + title, filename);
         if (!file.exists()) {
             file.getParentFile().mkdirs();
@@ -122,13 +122,13 @@ public class Download {
         }
         file.createNewFile();
         FileOutputStream os = new FileOutputStream(file, true);
-        // 开始读取
+        
         while ((len = is.read(bs)) != -1) {
             os.write(bs, 0, len);
             os.flush();
         }
         System.out.println(i + 1 + "download complete");
-        // 完毕，关闭所有链接
+       
         os.close();
         is.close();
     }
