@@ -95,7 +95,7 @@ public class Download {
             try {
                 download(title, imageList.get(i), i);
             } catch (Exception e) {
-                System.out.println("图片" + (i + 1) + "下载异常！");
+                System.out.println("image" + (i + 1) + "download error");
                 e.printStackTrace();
             }
         }
@@ -114,7 +114,7 @@ public class Download {
         int len;
         // 输出的文件流
         String filename = title + "_" + (i + 1) + "." + imageBean.type;  //下载路径及下载图片名称
-        File file = new File("E:\\公众号抓取\\" + title, filename);
+        File file = new File("E:\\image_download\\" + title, filename);
         if (!file.exists()) {
             file.getParentFile().mkdirs();
         } else {
@@ -127,7 +127,7 @@ public class Download {
             os.write(bs, 0, len);
             os.flush();
         }
-        System.out.println(i + 1 + "下载完成");
+        System.out.println(i + 1 + "download complete");
         // 完毕，关闭所有链接
         os.close();
         is.close();
